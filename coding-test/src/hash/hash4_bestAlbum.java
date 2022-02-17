@@ -1,10 +1,12 @@
+package hash;
+
 import java.util.*;
-class hash4 {
+class hash4_bestAlbum {
     public static void main(String[] args) {
-        int[] answer = hash4(new String[]{"classic","pop","classic","classic","pop"}, new int[]{500,600,150,800,2500});
+        int[] answer = solution(new String[]{"classic","pop","classic","classic","pop"}, new int[]{500,600,150,800,2500});
         System.out.println(Arrays.toString(answer));
     }
-    public static int[] hash4(String[] genres, int[] plays) {
+    public static int[] solution(String[] genres, int[] plays) {
         int[] answer = {};
 
         int play_cnt = 0;
