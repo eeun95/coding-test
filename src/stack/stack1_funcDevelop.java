@@ -23,8 +23,6 @@ public class stack1_funcDevelop {
 
         }
 
-        System.out.println("TeTS");
-
         return answer;
     }
 }
