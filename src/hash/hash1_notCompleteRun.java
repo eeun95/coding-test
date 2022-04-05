@@ -1,10 +1,9 @@
 package hash;
 
 
-import java.util.Arrays;
 import java.util.HashMap;
 
-public class hash1_NotCompleteRun {
+public class hash1_notCompleteRun {
     public static void main(String[] args) {
         String participant[] = {"leo", "kiki", "eden"};
         String completion[] = {"kiki", "eden"};

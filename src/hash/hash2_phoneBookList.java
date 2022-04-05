@@ -44,7 +44,7 @@ public class hash2_phoneBookList {
 
         for (String key : hm.keySet()) {
 //            System.out.println(key + " " + hm.get(key));
-            if((Integer)hm.get(key)>1) {
+            if(hm.get(key)>1) {
                 answer = false;
             }
         }
