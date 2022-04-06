@@ -9,51 +9,49 @@ class hash4_bestAlbum {
     public static int[] solution(String[] genres, int[] plays) {
         int[] answer = {};
 
-        int play_cnt = 0;
-
         // 고유번호, 장르
         HashMap<Integer, String> genre = new HashMap<Integer, String>();
         // 고유번호, 재생횟수
         HashMap<Integer, Integer> play = new HashMap<Integer, Integer>();
         // 장르, 총 재생횟수
         HashMap<String, Integer> playCnt = new HashMap<String, Integer>();
-        for(int i=0; i<genres.length; i++) {
+
+        for (int i=0; i<genres.length; i++) {
             genre.put(i, genres[i]);
             play.put(i, plays[i]);
-
-            if(playCnt.containsKey(genres[i])) {
-                play_cnt = playCnt.get(genres[i])+plays[i];
-            } else {
-                play_cnt = plays[i];
-            }
-            playCnt.put(genres[i], play_cnt);
         }
+
+        for (Integer key : genre.keySet()) {
+            System.out.println(key + " " + genre.get(key) + " " + play.get(key));
+            playCnt.put(genre.get(key), playCnt.getOrDefault(genre.get(key), 0) + play.get(key));
+        }
+
+        // Map.Entry 의 내장함수 사용하여 value값 기준 정렬 (오름차순)
+        // 내가 필요한건 내림차순
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(playCnt.entrySet());
+        entryList.sort(Map.Entry.comparingByValue());
+
+        for(Map.Entry<String, Integer> entry : entryList){
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+        // 내림차순 정렬,, 소스 분석은 좀 나중에
         List<Integer> playKeySet = new ArrayList<>(play.keySet());
         Collections.sort(playKeySet, (value1, value2) -> (play.get(value2).compareTo(play.get(value1))));
 
         List<String> playCntKeySet = new ArrayList<>(playCnt.keySet());
         Collections.sort(playCntKeySet, (value1, value2) -> (playCnt.get(value2).compareTo(playCnt.get(value1))));
 
-        int index = 0;
-        answer = new int[playCnt.size()*2];
-        for( String key : playCntKeySet ){
-            int cnt = 0;
-            for(Integer i : playKeySet) {
-                if(key.equals(genre.get(i))) {
-                    if(cnt>1) {
-                        break;
-                    }
-                    System.out.println(index+" "+i);
-                    answer[index] = i;
-                    cnt++;
-                    index++;
-                }
-            }
+        System.out.println(playCntKeySet);
+        System.out.println(playKeySet);
 
+        int max = 2;
+        for (String g : playCntKeySet) {
+            for (Integer key : genre.keySet()) {
+
+            }
         }
 
-        //System.out.println(playCntKeySet);
-        //System.out.println(playKeySet);
         return answer;
     }
 }
