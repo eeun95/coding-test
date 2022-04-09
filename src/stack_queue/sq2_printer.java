@@ -35,7 +35,7 @@ public class sq2_printer {
                 q.add(tmp);
                 q2.add(tmp2);
             } else {
-                System.out.println(q2.peek()+" "+q.peek());
+                System.out.println(max+" "+q2.peek()+" "+q.peek());
                 q3.add(q2.poll());
                 q.poll();
                 if(q.peek()!=null) {
