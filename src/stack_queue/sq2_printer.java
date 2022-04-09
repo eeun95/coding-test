@@ -1,8 +1,6 @@
 package stack_queue;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class sq2_printer {
     public static void main(String[] args) {
@@ -18,6 +16,16 @@ public class sq2_printer {
         Queue<Integer> q = new LinkedList<>();
         Queue<Integer> q2 = new LinkedList<>();
         Queue<Integer> q3 = new LinkedList<>();
+
+        HashMap<String, Integer> hm = new HashMap<>();
+
+        for (int i = 0; i < priorities.length; i++) {
+            hm.put(String.valueOf((char)(97+i)), priorities[i]);
+        }
+
+        for (String key : hm.keySet()) {
+            System.out.println(key + " " + hm.get(key));
+        }
 
         int max = 0;
         for (int i = 0; i < priorities.length; i++) {
