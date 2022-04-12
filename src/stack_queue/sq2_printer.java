@@ -13,54 +13,34 @@ public class sq2_printer {
     public static int solution(int[] priorities, int location) {
         int answer = 0;
 
-        Queue<Integer> q = new LinkedList<>();
-        Queue<Integer> q2 = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();          // 중요도
+        Queue<Integer> q2 = new LinkedList<>();         // 순서
         Queue<Integer> q3 = new LinkedList<>();
 
-        HashMap<String, Integer> hm = new HashMap<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
 
-        for (int i = 0; i < priorities.length; i++) {
-            hm.put(String.valueOf((char)(97+i)), priorities[i]);
-        }
-
-        for (String key : hm.keySet()) {
-            System.out.println(key + " " + hm.get(key));
-        }
 
         int max = 0;
         for (int i = 0; i < priorities.length; i++) {
-            if (max <= priorities[i]) {
-                max = priorities[i];
+            if (!pq.contains(priorities[i])) {
+                pq.add(priorities[i]);
             }
             q.add(priorities[i]);
             q2.add(i);
         }
 
+        max = pq.poll();
+
         while (!q.isEmpty()) {
-            if( max > q.peek() ) {
+
+            if (max < q.peek()) {
                 int tmp = q.poll();
                 int tmp2 = q2.poll();
                 q.add(tmp);
                 q2.add(tmp2);
-            } else {
-                System.out.println(max+" "+q2.peek()+" "+q.peek());
-                q3.add(q2.poll());
-                q.poll();
-                if(q.peek()!=null) {
-                    max = q.peek();
-                }
             }
-        }
 
-        int cnt = 0;
-        while (!q3.isEmpty()) {
-            int p = q3.poll();
-            cnt++;
-            System.out.println(">>>"+p+" "+cnt);
-            if (p == location) {
-                answer = cnt;
-                break;
-            }
+            System.out.println(q.poll());
         }
 
         return answer;
