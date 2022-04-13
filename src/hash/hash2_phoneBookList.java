@@ -8,8 +8,9 @@ public class hash2_phoneBookList {
         String[] phone1 = {"119", "97674223", "1195524421"};
         String[] phone2 = {"123","456","789"};
         String[] phone3 = {"12","123","1235","567","88"};
+        String[] phone4 = {"119", "114", "112", "123223123", "1231231234"};
 
-        if(solution(phone3)) {
+        if(solution(phone4)) {
             System.out.println("겹치는 번호 없음");
         }
     }
@@ -34,16 +35,22 @@ public class hash2_phoneBookList {
         Arrays.sort(phone_book);
 
         int leng = phone_book[0].length();
+        for (int i = 1; i < phone_book.length; i++) {
+            if(leng >= phone_book[i].length()) {
+                leng = phone_book[i].length();
+            }
+        }
+
+        //System.out.println(leng);
 
         HashMap<String, Integer> hm = new HashMap<>();
 
-        int i=0;
         for (String ph : phone_book) {
             hm.put(ph.substring(0, leng), hm.getOrDefault(ph.substring(0, leng), 0)+1);
         }
 
         for (String key : hm.keySet()) {
-//            System.out.println(key + " " + hm.get(key));
+            //System.out.println(key + " " + hm.get(key));
             if(hm.get(key)>1) {
                 answer = false;
             }
