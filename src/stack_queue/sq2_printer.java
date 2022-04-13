@@ -33,15 +33,32 @@ public class sq2_printer {
 
         while (!q.isEmpty()) {
 
-            if (max < q.peek()) {
+            if (max == q.peek()) {
+                System.out.println(q2.peek() + " " + q.peek());
+                q3.add(q2.poll());
+                q.poll();
+            } else if (max > q.peek()) {
                 int tmp = q.poll();
                 int tmp2 = q2.poll();
                 q.add(tmp);
                 q2.add(tmp2);
             }
 
-            System.out.println(q.poll());
+            if(!q.contains(max) && !pq.isEmpty()) {
+                max = pq.poll();
+            }
         }
+
+        int cnt = 1;
+        while (!q3.isEmpty()) {
+            //System.out.println(q3.poll());
+            if(q3.poll() == location) {
+                break;
+            }
+            cnt ++;
+        }
+
+        answer = cnt;
 
         return answer;
     }
