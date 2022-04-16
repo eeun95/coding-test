@@ -30,7 +30,7 @@ public class heap2_diskController {
             int t = time.poll();
             wait_time = hm.get(t);
             sum += (end_time - wait_time);
-            //System.out.println((end_time-wait_time) + " " + t + " " + wait_time);
+            System.out.println((end_time-wait_time) + " " + t + " " + wait_time);
         }
 
         answer = sum/avg;
