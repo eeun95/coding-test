@@ -8,19 +8,19 @@ public class bruteForce1_test {
         int answers2[] = {1, 3, 2, 4, 2};
         int answers3[] = {3, 3, 2, 1, 5};
         int answers4[] = {5, 5, 4, 3, 3,6,6,6,6,6,6};
-        System.out.println(solution(answers3));
+        System.out.println(solution(answers4));
     }
 
     public static int[] solution(int[] answers) {
         int[] answer = {};
 
-        int[][] students = {{1, 2, 3, 4, 5, 1, 2, 3, 4, 5},{2, 1, 2, 2, 2, 3, 2, 4, 2, 5},{3, 3, 1, 1, 2, 2, 4, 4, 5, 5}};
+        int[][] students = {{1, 2, 3, 4, 5},{2, 1, 2, 3, 2, 4, 2, 5},{3, 3, 1, 1, 2, 2, 4, 4, 5, 5}};
 
         HashMap<Integer, Integer> hm = new HashMap<>();
 
         for (int i = 0; i < students.length; i++) {
             for (int j = 0; j < answers.length; j++) {
-                if (students[i][j%5] == answers[j]) {
+                if (students[i][j%(students[i].length)] == answers[j]) {
                     hm.put((i+1), hm.getOrDefault((i+1), 0)+1);
                 } else {
                     hm.put((i + 1), hm.getOrDefault((i+1), 0));
