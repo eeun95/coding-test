@@ -7,7 +7,7 @@ public class bruteForce1_test {
         int answers[] = {1, 2, 3, 4, 5};
         int answers2[] = {1, 3, 2, 4, 2};
         int answers3[] = {3, 3, 2, 1, 5};
-        int answers4[] = {5, 5, 4, 2, 3};
+        int answers4[] = {5, 5, 4, 3, 3};
         System.out.println(solution(answers4));
     }
 
@@ -26,7 +26,6 @@ public class bruteForce1_test {
             }
         }
 
-        // 내림차순 정렬,, 소스 분석은 좀 나중에
         List<Integer> keySet = new ArrayList<>(hm.keySet());
         Collections.sort(keySet, (value1, value2) -> (hm.get(value2).compareTo(hm.get(value1))));
 
@@ -34,19 +33,23 @@ public class bruteForce1_test {
 
         PriorityQueue<Integer> pq = new PriorityQueue<>();
 
-        int max = hm.get(keySet.get(0));            // 젤 많이 맞춘 애가 맞춘 갯수
-        for(int n : hm.keySet()) {
-            if (max == hm.get(n)) {
-                System.out.println(n+" stud 바로 최대값");
-                pq.add(n);
+        if(keySet.size()>0) {
+            int max = hm.get(keySet.get(0));            // 젤 많이 맞춘 애가 맞춘 갯수
+            for (int n : hm.keySet()) {
+                if (max == hm.get(n)) {
+                    System.out.println(max + " student" + n + " 바로 최대값");
+                    pq.add(n);
+                }
             }
-        }
 
-        answer = new int[pq.size()];
-        int idx = 0;
-        while (!pq.isEmpty()) {
-            answer[idx] = pq.poll();
-            idx++;
+            answer = new int[pq.size()];
+            int idx = 0;
+            while (!pq.isEmpty()) {
+                answer[idx] = pq.poll();
+                idx++;
+            }
+        } else {
+            answer = new int[] {1,2,3};
         }
 
         return answer;
