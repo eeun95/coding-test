@@ -1,7 +1,9 @@
+package dirTest;
+
 public class staticTest {
     public static void main(String[] args) {
         print.printStatic();
-        //print();
+        //dirTest.print();
         print st = new print();
         st.print();
     }

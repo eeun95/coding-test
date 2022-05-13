@@ -1,16 +1,20 @@
-public class accessTest {
+package dirTest;
+
+import dirTest.accessClass;
+
+public class accessTest2 {
 
     public static void main(String[] args) {
         accessClass ac = new accessClass();
-        ac.print();
+        //ac.print();
     }
 }
-class accessClass {
+class accessClass2 {
     public static void main(String[] args) {
         accessClass ac = new accessClass();
         ac.print();
     }
-    void print() {
+    private void print() {
         System.out.println("HI");
     }
 }
