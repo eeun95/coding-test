@@ -72,7 +72,7 @@ public class bruteForce_findDecimal {
         }
 
         for (int i = 0; i < others.length(); i++) {
-            // 현재 조합+다음 숫자 , 현재 숫자를 뺀 나머지 숫자를 파라미터로 전달
+            // 현재 조합+현재 숫자 , 현재 숫자를 뺀 나머지 숫자를 파라미터로 전달
             recursive(comb + others.charAt(i), others.substring(0, i) + others.substring(i + 1));
         }
     }
