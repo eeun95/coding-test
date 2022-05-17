@@ -5,22 +5,17 @@ import java.util.Arrays;
 public class greedy_gymClothes {
     public static void main(String[] args) {
         int n = 5;
-        int[] lose = {2,4};
-        int[] reserve = {1,3,5};
+        int[] lost = {1, 2, 4};
+        int[] reserve = {2, 4, 5}; // 정답 4
+        System.out.println("return : "+solution(n, lost, reserve));
 
-        System.out.println(solution(n, lose, reserve));
+        lost = new int[] {1, 2, 4};
+        reserve = new int[] {2, 3, 4, 5}; // 정답 4
+        System.out.println("return : "+solution(n, lost, reserve));
 
-        reserve = new int[]{3};
-        System.out.println(solution(n, lose, reserve));
-
-        n = 3;
-        lose = new int[]{3};
-        reserve = new int[]{1};
-        System.out.println(solution(n, lose, reserve));
-
-        lose = new int[]{1,3,5};
+        lost = new int[]{1,3,5};
         reserve = new int[]{1,3,5};
-        System.out.println(solution(n, lose, reserve));
+        System.out.println("return : "+solution(n, lost, reserve));
     }
 
     public static int solution(int n, int[] lost, int[] reserve) {
@@ -35,7 +30,7 @@ public class greedy_gymClothes {
         for (int i : reserve) {
 
             for (int j : lost) {
-                System.out.println(i + "번 학생 > " + j+"번 학생");
+               //System.out.println(i + "번 학생 > " + j+"번 학생");
 
                 int max = i+1;
                 int min = i-1;
@@ -54,6 +49,12 @@ public class greedy_gymClothes {
             answer = s_cnt + r_cnt + cnt;
         }
         System.out.println(">>>"+cnt);
+
+        for (int i : lost) {
+            if(Arrays.asList(reserve).contains(i)) {
+                System.out.println(i);
+            }
+        }
 
 
         return answer;
