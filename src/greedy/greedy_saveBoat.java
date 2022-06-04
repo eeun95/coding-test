@@ -19,27 +19,27 @@ public class greedy_saveBoat {
     public static int solution(int[] people, int limit) {
         int answer = 0;
 
-        Integer[] p = Arrays.stream(people).boxed().toArray(Integer[]::new);
-        Arrays.sort(p, Collections.reverseOrder());
-
+        Arrays.sort(people);
         ArrayDeque<Integer> dq = new ArrayDeque<>();
-        for (int person : p) {
+        for (int person : people) {
             dq.add(person);
         }
 
         while (!dq.isEmpty()) {
-            int able = limit - dq.peekFirst();
-            System.out.println(dq.peekFirst()+" 시작 !!!!");
-            if (dq.peekLast() <= able) {
-                System.out.println(dq.peekFirst()+" "+dq.peekLast()+" 한 보트로 나감");
-                dq.pollFirst();
-                dq.pollLast();
-                answer++;
+            if(dq.peekFirst() >= limit) {
+                answer = dq.size();
+                break;
             } else {
-                System.out.println(dq.pollFirst()+" 혼자 타고 나감");
-                answer++;
+                int able = limit - dq.peekLast();
+                if (dq.peekFirst() <= able) {
+                    dq.pollFirst();
+                    dq.pollLast();
+                    answer++;
+                } else {
+                    dq.pollLast();
+                    answer++;
+                }
             }
-
         }
 
         return answer;
