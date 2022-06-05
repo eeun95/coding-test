@@ -21,13 +21,8 @@ public class kakao {
         int[] answer = {};
 
         HashMap<String, Integer> id = new HashMap<>();
-        HashMap<String, String> result = new HashMap<>();
+        HashMap<String, Integer> result = new HashMap<>();
         Set<String> reportList = new HashSet<>();
-
-        // 유저별 신고횟수 담을 hashmap 세팅
-        for (String s : id_list) {
-            id.put(s, 0);
-        }
 
         // set이 중복 제거해주므로 신고자/신고당한자 담음
         for (String r : report) {
@@ -37,16 +32,25 @@ public class kakao {
         Iterator<String> iterator = reportList.iterator();
         while (iterator.hasNext()) {
             String str = iterator.next();
-            String reporter = str.split(" ")[0];
             String bad = str.split(" ")[1];
 
             id.put(bad, id.getOrDefault(bad, 0) + 1);
         }
 
-        answer = new int[id.size()];
+        for (String s : reportList) {
+            String reporter = s.split(" ")[0];
+            String bad = s.split(" ")[1];
 
-        for (String ss : id.keySet()) {
-            System.out.println(ss+" "+id.get(ss));
+            if(id.get(bad)>=k) {
+                result.put(reporter, result.getOrDefault(reporter, 0) + 1);
+            }
+        }
+
+        answer = new int[id_list.length];
+        int index  =0;
+        for (String i : id_list) {
+            answer[index] = (result.get(i)!=null) ? result.get(i) : 0;
+            index++;
         }
 
         return answer;
