@@ -16,20 +16,10 @@ public class kakao2 {
 
         boolean before = false;
         boolean flag = false;
+        System.out.println(new_id);
         // 3단계 - 마침표가 두번 이상 연속된 부분을 하나로 치환
-        for (int i = 0; i < new_id.length(); i++) {
-            String s = new_id.substring(i, i + 1);
-
-            if (i!=0 && s.equals(".")) {
-                before = true;
-            } else {
-                before = false;
-            }
-            if (before && s.equals(".")) {
-                System.out.println(i);
-                before = false;
-            }
-
+        while (new_id.contains("..")) {
+            new_id = new_id.replace("..", ".");
         }
 
         // 4단계 - 마침표가 처음이나 끝에 위치한다면 제거
