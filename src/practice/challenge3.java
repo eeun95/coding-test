@@ -4,7 +4,7 @@ public class challenge3 {
     public static void main(String[] args) {
         int[] a = {1, 2, 3, 4};
         int[] b = {-3, -1, 0, 2};
-        solution(a, b)
+        solution(a, b);
     }
 
     public static int solution(int[] a, int[] b) {
@@ -16,6 +16,7 @@ public class challenge3 {
             sum += (num * b[i]);
             i++;
         }
+        answer = sum;
         return answer;
     }
 }
