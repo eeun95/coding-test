@@ -8,6 +8,10 @@ public class kakao5 {
 
     public static int solution(String s) {
         int answer = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+
+        }
         return answer;
     }
 }
