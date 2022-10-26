@@ -5,14 +5,14 @@ import java.util.HashMap;
 public class baekjoon17427 {
 
     public static void main(String[] args) {
-        int N = 10000;
+        int N = 10;
         int sum = 0;
 
+        getDivisorSum2(N);
         for (int i = 1; i <= N; i++) {
             //System.out.println(i+":"+getDivisorSum(i));
-            sum += getDivisorSum(i);
+            //sum += getDivisorSum2(i);
         }
-        System.out.println(sum);
 
     }
 
@@ -48,6 +48,12 @@ public class baekjoon17427 {
             //System.out.println(key + " " + map.get(key));
             sum += (key + map.get(key));
         }
+
+        return sum;
+    }
+
+    public static int getDivisorSum2(int x) {
+        int sum = 0;
 
         return sum;
     }
