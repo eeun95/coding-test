@@ -39,8 +39,16 @@ public class Main_1260 {
         dfs(V);
         bfs(V);
 
-        System.out.println(hs);
-        System.out.println(hs2);
+        //System.out.println(hs);
+        for (Integer a : hs.toArray(new Integer[hs.size()])) {
+            System.out.print(a+" ");
+        }
+        System.out.println();
+
+        //System.out.println(hs2);
+        for (Integer a : hs2.toArray(new Integer[hs2.size()])) {
+            System.out.print(a+" ");
+        }
     }
 
     public static void dfs(int i) {
