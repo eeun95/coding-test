@@ -47,7 +47,7 @@ public class Main_1260 {
         if (!visit[i]) {
             hs.add(i);
             visit[i] = true;
-            for (int j = 0; j < M; j++) {
+            for (int j = 1; j <= N; j++) {
                 if(dfs[i][j]) {
                     dfs(j);
                 }
@@ -57,13 +57,17 @@ public class Main_1260 {
 
     public static void bfs(int i) {
         Queue<Integer> q = new LinkedList<>();
+        Queue<Integer> q2 = new LinkedList<>();
         q.add(i);
         while (!q.isEmpty()) {
             int start = q.poll();
+            q2.add(start);
             //System.out.println(start);
             hs2.add(start);
-            for (int j = 0; j < M; j++) {
-                if(bfs[start][j]) {
+            for (int j = 1; j <= N; j++) {
+                // 이미 다 돈 정점은 q2에 빼줘서 중복 체크
+                if(bfs[start][j] && !q2.contains(j)) {
+                    //System.out.println(start+ " "+ j);
                     q.add(j);
                 }
             }
