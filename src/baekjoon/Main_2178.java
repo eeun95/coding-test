@@ -25,9 +25,20 @@ public class Main_2178 {
                 dfs[i][j] = ss;
             }
         }
-        dfs(N, M);
+        dfs(0,0);
     }
     public static void dfs(int i, int j) {
-
+        if(i<N && j<M) {
+            if (dfs[i][j] == 1) {
+                for (int k = j+1; k < M; k++) {
+                    System.out.println(i+" "+k+" 지나가");
+                    dfs(i, k);
+                }
+            } else {
+                i++;
+                System.out.println(i+" "+(j-1)+" 내려가");
+                dfs(i, j-1);
+            }
+        }
     }
 }
