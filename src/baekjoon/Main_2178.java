@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 public class Main_2178 {
     static int N;
     static int M;
-    static int count=1;
+    static int count;
 
     static int[][] find;
     static boolean[][] visit;
@@ -36,33 +36,32 @@ public class Main_2178 {
         // 우로 이동 i, j+1
         // 좌로 이동 i, j-1
         if(i==N-1 && j==M-1) {
-            System.out.println("끝"+count);
+            visit[i][j]=true;
+            System.out.println(i+" "+j+" 끝"+count);
             return;
         }
-        if(!visit[i][j]) {
-            count++;
+        if(!visit[N-1][M-1] && !visit[i][j]) {
             System.out.println(i+" "+j+" 무브");
+            count++;
             visit[i][j] = true;
             // 우로 이동 가능
-            if(j+1<M && find[i][j+1]==1) {
+            if(j+1<M && find[i][j+1]==1 && !visit[i][j+1]) {
                 move(i, j+1);
             }
             // 아래로 이동 가능
-            if(i+1<N && find[i+1][j]==1) {
+            if(i+1<N && find[i+1][j]==1 && !visit[i+1][j]) {
                 move(i+1, j);
             }
             // 위로 이동 가능
-            if(i-1>-1 && find[i-1][j]==1) {
+            if(i-1>-1 && find[i-1][j]==1 && !visit[i-1][j]) {
                 move(i-1, j);
             }
             // 좌로 이동 가능
-            if(j-1>-1 && find[i][j-1]==1) {
+            if(j-1>-1 && find[i][j-1]==1 && !visit[i][j-1]) {
                 move(i, j-1);
             }
         } else {
-            System.out.println("왔었어 "+i+" "+j);
-            count--;
+            System.out.println("들렀어 "+i+" "+j);
         }
-        System.out.println(count);
     }
 }
