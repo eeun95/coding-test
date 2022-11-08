@@ -3,15 +3,19 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main_2178 {
     static int N;
     static int M;
     static int count;
 
+    static int dx[] = {0, 0, -1, 1};    // 좌우이동
+    static int dy[] = {-1, 1, 0, 0};    // 상하이동
+
     static int[][] find;
     static boolean[][] visit;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
@@ -28,7 +32,33 @@ public class Main_2178 {
                 find[i][j] = ss;
             }
         }
-        move(0,0);
+        bfs(0,0);
+        System.out.println(find[N-1][M-1]);
+    }
+    public static void bfs(int x, int y) {
+        Queue<int[]> q = new LinkedList();
+        q.offer(new int[]{x, y});
+        while(!q.isEmpty()) {
+            int[] now = q.poll();
+            int nowX = now[0];
+            int nowY = now[1];
+
+            for (int i = 0; i < 4; i++) {
+
+                int nextX = nowX + dx[i];
+                int nextY = nowY + dy[i];
+
+                if (nextX < 0 || nextY < 0 || nextX >= N || nextY >= M)
+                    continue;
+                if (visit[nextX][nextY] || find[nextX][nextY] == 0)
+                    continue;
+
+                q.add(new int[] {nextX, nextY});
+                find[nextX][nextY] = find[nowX][nowY] + 1;
+                visit[nextX][nextY] = true;
+            }
+
+        }
     }
     public static void move(int i, int j) {
         // 위로 이동 i-1, j
