@@ -63,38 +63,48 @@ public class Main_1012 {
         if(visit[x][y]) {
             return;
         } else {
-            System.out.println(x+" "+y+" HIHIHI");
             count++;
+            System.out.println("COME!!!"+x+" "+y);
             q.offer(new int[]{x, y});
             visit[x][y] = true;
         }
 
-            while (!q.isEmpty()) {
+        while (!q.isEmpty()) {
 
-                int[] position = q.poll();
-                int dx = position[0];
-                int dy = position[1];
-                visit[dx][dy] = true;
-                System.out.println(dx+" "+dy+"<");
+            int[] position = q.poll();
+            int dx = position[0];
+            int dy = position[1];
 
-                // 호출 된 위치와 인접한 위치 찾기
-                if (dx - 1 > -1 && bfs[dx - 1][dy] && !visit[dx-1][dy]) {
-                    // 상
-                    q.offer(new int[]{dx - 1, dy});
-                }
-                if (dx + 1 < M && bfs[dx + 1][dy] && !visit[dx+1][dy]) {
-                    // 하
-                    q.offer(new int[]{dx + 1, dy});
-                }
-                if (dy - 1 > -1 && bfs[dx][dy - 1] && !visit[dx][dy-1]) {
-                    // 좌
-                    q.offer(new int[]{dx, dy - 1});
-                }
-                if (dy + 1 < N && bfs[dx][dy + 1] && !visit[dx][dy+1]) {
-                    // 우
-                    q.offer(new int[]{dx, dy + 1});
-                }
+            if((dx+1) > M || (dy+1) >N) {
+                System.out.println(dx+" .. "+dy);
+                break;
             }
+            // 호출 된 위치와 인접한 위치 찾기
+            if (dx - 1 > -1 && bfs[dx - 1][dy] && !visit[dx-1][dy]) {
+                // 상
+                System.out.println("상 "+(dx-1) + " " + dy);
+                q.offer(new int[]{dx - 1, dy});
+                visit[dx-1][dy] = true;
+            }
+            if (dx + 1 < M && bfs[dx + 1][dy] && !visit[dx+1][dy]) {
+                // 하
+                System.out.println("하 "+(dx+1) + " " + dy);
+                q.offer(new int[]{dx + 1, dy});
+                visit[dx+1][dy] = true;
+            }
+            if (dy - 1 > -1 && bfs[dx][dy - 1] && !visit[dx][dy-1]) {
+                // 좌
+                System.out.println("좌 "+dx + " " + (dy - 1));
+                q.offer(new int[]{dx, dy - 1});
+                visit[dx][dy-1] = true;
+            }
+            if (dy + 1 < N && bfs[dx][dy + 1] && !visit[dx][dy+1]) {
+                // 우
+                System.out.println("우 "+dx + " " + (dy + 1));
+                q.offer(new int[]{dx, dy + 1});
+                visit[dx][dy+1] = true;
+            }
+        }
     }
     public static void dfs(int x, int y, boolean start) {
         if(!visit[x][y]) {
