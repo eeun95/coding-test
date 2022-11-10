@@ -27,6 +27,7 @@ public class Main_1012 {
             K = Integer.valueOf(st.nextToken());        // 배추가 심어진 갯수
 
             dfs = new boolean[M + 1][N + 1];            // 배추가 심어진 곳을 알기위한 배열
+            bfs = new boolean[M + 1][N + 1];            // 배추가 심어진 곳을 알기위한 배열
             visit = new boolean[M + 1][N + 1];          // 카운트 체크를 위한 배열
 
             for (int j = 0; j < K; j++) {
@@ -45,7 +46,9 @@ public class Main_1012 {
                     }
 
                      */
-                    bfs(a,b);
+                    if(bfs[a][b]) {
+                        bfs(a, b);
+                    }
                 }
             }
             q.offer(count);
@@ -56,11 +59,42 @@ public class Main_1012 {
     }
     public static void bfs(int x, int y) {
         Queue<int[]> q = new LinkedList<>();
-        q.offer(new int[]{x,y});
-        while (!q.isEmpty()) {
-            int [] position = q.poll();
+
+        if(visit[x][y]) {
+            return;
+        } else {
+            System.out.println(x+" "+y+" HIHIHI");
+            count++;
+            q.offer(new int[]{x, y});
+            visit[x][y] = true;
         }
 
+            while (!q.isEmpty()) {
+
+                int[] position = q.poll();
+                int dx = position[0];
+                int dy = position[1];
+                visit[dx][dy] = true;
+                System.out.println(dx+" "+dy+"<");
+
+                // 호출 된 위치와 인접한 위치 찾기
+                if (dx - 1 > -1 && bfs[dx - 1][dy] && !visit[dx-1][dy]) {
+                    // 상
+                    q.offer(new int[]{dx - 1, dy});
+                }
+                if (dx + 1 < M && bfs[dx + 1][dy] && !visit[dx+1][dy]) {
+                    // 하
+                    q.offer(new int[]{dx + 1, dy});
+                }
+                if (dy - 1 > -1 && bfs[dx][dy - 1] && !visit[dx][dy-1]) {
+                    // 좌
+                    q.offer(new int[]{dx, dy - 1});
+                }
+                if (dy + 1 < N && bfs[dx][dy + 1] && !visit[dx][dy+1]) {
+                    // 우
+                    q.offer(new int[]{dx, dy + 1});
+                }
+            }
     }
     public static void dfs(int x, int y, boolean start) {
         if(!visit[x][y]) {
