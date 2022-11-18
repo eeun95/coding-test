@@ -30,12 +30,16 @@ public class Main_11722 {
         for (int i = 0; i < N; i++) {
             dp[i] = 1;
             for (int j = 0; j < i; j++) {
+                System.out.print(array[i] + " " + array[j] + " " + dp[i] + " " + dp[j]);
                 if(array[j] > array[i] && dp[j]+1 > dp[i]) {
                     dp[i] = dp[j]+1;
                     max = max(max, dp[i]);
+                    System.out.println("<<");
                 }
+                System.out.println();
             }
         }
         System.out.println(max);
+        System.out.println(dp[N-1]);
     }
 }
