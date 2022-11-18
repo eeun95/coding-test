@@ -3,44 +3,39 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
+import static java.lang.Math.max;
+
 public class Main_11722 {
-    static int max = 0;
-    static int cnt = 0;
+    static int N = 0;
+    static int[] dp;
+    static int[] array;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Queue<Integer> q = new LinkedList<>();
-        int N = Integer.valueOf(br.readLine());     // 수열의 크기
-        int[] array = new int[N];
+        N = Integer.valueOf(br.readLine());     // 수열의 크기
+        array = new int[N];
+        dp = new int[N];
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int i = 0;
-        while(st.hasMoreTokens()) {
+        while (st.hasMoreTokens()) {
             int a = Integer.valueOf(st.nextToken());
             array[i] = a;
-            q.offer(a);
             i++;
         }
-        System.out.println(q);
-        System.out.println(cnt);
+        dp();
     }
-    public static void dp(Queue<Integer> q) {
-        System.out.println(q);
-        Queue<Integer> tmpQ = new LinkedList<>();
-        int start = q.poll();
-        while (!q.isEmpty()) {
-            int A = q.poll();
-            tmpQ.add(A);
-            if (q.isEmpty()) break;
-            if (max > A && A > q.peek()) {
-                System.out.println("+" + A);
+    public static void dp() {
+        int max = 1;
+        for (int i = 0; i < N; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if(array[j] > array[i] && dp[j]+1 > dp[i]) {
+                    dp[i] = dp[j]+1;
+                    max = max(max, dp[i]);
+                }
             }
         }
-        if (!tmpQ.isEmpty()) {
-            dp(tmpQ);
-        }
+        System.out.println(max);
     }
 }
