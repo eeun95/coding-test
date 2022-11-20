@@ -3,29 +3,26 @@ package baekjoon;
 import java.util.Scanner;
 
 public class Main_9095 {
-    static int[] dp = new int[500];
-    static int start = 0;
+    static int[] dp = new int[11];
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
         int[] array = new int[N];
+
+        dp[1] = 1; // (1) - 1가지
+        dp[2] = 2; // (1+1, 2) - 2가지
+        dp[3] = 4; // (1+1+1, 1+2, 3) - 4가지
         for (int i = 0; i < N; i++) {
-            array[i] = sc.nextInt();
-            start = array[i];
-            System.out.println("START"+start);
-            dp(start);
+            int start = sc.nextInt();
+            array[i] = start;
+            for (int j = 4; j <= start; j++) {
+                dp[j] = dp[j-1]+dp[j-2]+dp[j-3];
+            }
         }
-    }
-
-    public static int dp(int num) {
-        System.out.println("DP IN");
-        if(num==1) return 1;
-        dp[num] = dp[num-1]+(start-(num-1));
-        System.out.println("dp["+num+"] = dp["+(num-1)+"] + "+(start-(num-1)));
-        dp(num-1);
-
-        return 0;
+        for (int n : array) {
+            System.out.println(dp[n]);
+        }
     }
 }
