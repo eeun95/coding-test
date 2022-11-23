@@ -12,17 +12,31 @@ public class Main_2775 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int T = Integer.valueOf(br.readLine());     // 테스트 케이스 수
+        int[] result = new int[T];
         for (int i = 0; i < T; i++) {
             count = 0;
             int k = Integer.valueOf(br.readLine());     // k층
             int n = Integer.valueOf(br.readLine());     // n호
             dp = new int[k+1][n+1];
-            dp(k, n);
+            for (int j = 1; j <= n; j++) {
+                dp[0][j] = j;
+            }
+            result[i] = dp(k, n);
+        }
+
+        for (int r : result) {
+            System.out.println(r);
         }
     }
-    public static void dp(int k, int n) {
-
-        dp[k][n] = dp[k][n-1] + dp[k-1][n];
+    public static int dp(int k, int n) {
+        for (int i = 1; i <= k; i++) {
+            for (int j = 1; j <= n; j++) {
+                dp[i][j] = dp[i][j-1]+dp[i-1][j];
+                //System.out.println("dp["+i+"]["+j+"] = dp["+i+"]["+(j-1)+"] + dp["+(i-1)+"]["+j+"]");
+                //System.out.println(dp[i][j]+" = "+dp[i][j-1]+" + "+dp[i-1][j]);
+            }
+        }
+        return dp[k][n];
     }
 }
 
