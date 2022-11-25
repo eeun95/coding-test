@@ -17,7 +17,8 @@ public class Main_15989 {
         }
         for(int r : result) {
             for (int j = 1; j <= r; j++) {
-                System.out.println(j+" "+dp(j));
+                //System.out.println(j+" "+dp(j));
+                dp(j);
             }
             System.out.println(dp[r]);
         }
@@ -26,11 +27,15 @@ public class Main_15989 {
         if(n<4) {
             return dp[n] = n;
         } else {
-            if(n==4) {
-                return dp[n] = dp[n - 1] + dp[n - 2] + dp[n - 3] - dp[n - 2];
-            } else {
-                return dp[n] = dp[n - 1] + dp[n - 2] + dp[n - 3] - (dp[n - 1]-1);
+            if(n<6) {
+                return dp[n] = dp[n - 1] + dp[n - 2] + dp[n - 3] - (dp[n - 1] - 1) - (n/5);
+            } else if(n%5==0) {
+                return dp[n] = dp[n - 1] + dp[n - 2] + dp[n - 3] - (dp[n - 1] - 1) - 5;
+            }else {
+                //System.out.println(n+" "+(n%5)+" "+(dp[n-1]-1));
+                return dp[n] = dp[n - 1] + dp[n - 2] + dp[n - 3] - (dp[n - 1] - 1) - ((n%5));
             }
+
         }
     }
 }
