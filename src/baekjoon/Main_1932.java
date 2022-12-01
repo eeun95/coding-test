@@ -11,7 +11,6 @@ public class Main_1932 {
         int n = Integer.valueOf(br.readLine());
         int[][] triangle = new int[n][n];
         int[][] dp = new int[n][n];
-
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
             int j = 0;
@@ -21,25 +20,24 @@ public class Main_1932 {
             }
         }
 
-        for (int j = 0; j < triangle.length; j++) {
-            if(j==(n-1)) break;
+        int max = 0;
+
+        // 초기값 세팅
+        dp[0][0] = triangle[0][0];
+        for(int j=1; j<triangle.length; j++) {
             for (int k = 0; k < triangle[j].length; k++) {
-                if(j==0) {
-                    if(k==2)  break;
-                    int start = dp[0][0] = triangle[0][0];
-                    dp[j+1][k] = start + triangle[j+1][k];
-                } else {
-                    if(k==(n-1)) break;
-                    int now = dp[j][k];
-                    dp[j+1][k] = Math.max(now + triangle[j+1][k], now + triangle[j+1][k+1]);
-                    //System.out.println(j+" "+k+" "+dp[j][k]);
-                }
+                int now = triangle[j][k];
+                if(k==0)
+                    dp[j][k] = now+dp[j-1][k];
+                else
+                    dp[j][k] = Math.max(now+dp[j-1][k-1], now+dp[j-1][k]);
+                //System.out.println(dp[j][k]);
             }
         }
-        int max = 0;
-        for (int i = 0; i < n-1; i++) {
-            max = Math.max(max, dp[n-1][i]);
+        for (int m = 0; m < triangle.length; m++) {
+            max = Math.max(max, dp[n-1][m]);
         }
         System.out.println(max);
     }
 }
+
