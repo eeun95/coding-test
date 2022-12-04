@@ -7,18 +7,26 @@ public class Main_11057 {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
-        int[] dp = new int[1001];
-        dp[1] = 10;
-        dp[2] = 55;
-        int plus = 0;
-        for (int i = 9; i > 0; i--) {
-            for (int j=1; j<=i; j++) {
-                plus += j;
+        // 앞은 자릿수, 뒤는 끝나는 수
+        int[][] dp = new int[N+1][10];
+
+        // 초기값 세팅
+        for (int i = 0; i < 10; i++) {
+            dp[1][i] = 1;
+        }
+
+        for(int i=2; i<=N; i++){
+            for(int j=0; j<10; j++){
+                for(int k=0; k<=j; k++){
+                    dp[i][j] += dp[i-1][k];
+                    dp[i][j] %= 10007;
+                }
             }
         }
-        for (int n = 3; n <= N; n++) {
-            dp[n] = (dp[n-1] + plus)%10007;
+        int sum = 0;
+        for(int i=0; i<10; i++){
+            sum += dp[N][i];
         }
-        System.out.println(dp[N]);
+        System.out.println(sum%10007);
     }
 }
