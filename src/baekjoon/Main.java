@@ -6,20 +6,22 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int H = sc.nextInt();
-        int M = sc.nextInt();
+        int d = sc.nextInt();
+        int i = sc.nextInt();
+        int c = sc.nextInt();
 
-        int h, m =0;
-        if(M>=45) {
-            h = H;
-            m = M-45;
+        if (d == i && d == c && i == c) {
+            System.out.println(10000+(d*1000));
+        } else if((d==i) || (d==c) || (i==c)) {
+            if(d==i || d==c) {
+                System.out.println(1000+(d*100));
+            } else {
+                System.out.println(1000+(i*100));
+            }
         } else {
-            h = H-1;
-            m = (60+M)-45;
+            int max = Math.max(d, i);
+            max = Math.max(max, c);
+            System.out.println(max*100);
         }
-        if(h<0) {
-            h = (24+h);
-        }
-        System.out.println(h+" "+m);
     }
 }
