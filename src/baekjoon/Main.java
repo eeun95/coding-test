@@ -1,21 +1,20 @@
 package baekjoon;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int a= sc.nextInt();
-        int b = sc.nextInt();
+        int[] chess = new int[] {1,1,2,2,2,8};
 
-        System.out.println(a + b);
-        System.out.println(a - b);
-        System.out.println(a * b);
-        System.out.println(a / b);
-        System.out.println(a % b);
-
+        for (int i = 0; i < chess.length; i++) {
+            int a = sc.nextInt();
+            if (a == chess[i]) {
+                System.out.print("0 ");
+            } else {
+                System.out.print(chess[i] - a+" ");
+            }
+        }
     }
 }
