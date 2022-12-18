@@ -7,12 +7,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int A = sc.nextInt();
-        int B = sc.nextInt();
-        int C = sc.nextInt();
+        String b = sc.next();
 
-        System.out.println((A+B)%C);
-        System.out.println(((A%C)+(B%C))%C);
-        System.out.println((A*B)%C);
-        System.out.println(((A%C)*(B%C))%C);
+        System.out.println(A*(Integer.parseInt(b.substring(2))));
+        System.out.println(A*(Integer.parseInt(b.substring(1,2))));
+        System.out.println(A*(Integer.parseInt(b.substring(0,1))));
+        System.out.println(A*Integer.parseInt(b));
     }
 }
