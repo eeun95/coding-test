@@ -14,20 +14,16 @@ public class Main_11053 {
             A[i] = sc.nextInt();
         }
 
-        for (int i = 0; i < A.length; i++) {
-            int max = A[i];
-            dp[i]=1;
-            for (int j = i + 1; j < A.length; j++) {
-                //System.out.println(A[i]+" "+A[j]);
-                if(max < A[j]) {
-                    //System.out.println("MAX!++"+A[j]);
-                    dp[i]++;
-                    max = A[j];
+        for (int i = 0; i < N; i++) {
+            dp[i] = 1;
+
+            for (int j = 0; j < i; j++) {
+                if(A[j] < A[i] && dp[i] < dp[j]+1) {
+                    dp[i] = dp[j]+1;
                 }
             }
-            //System.out.println("==============");
         }
-        //Arrays.stream(dp).forEach(System.out::println);
+
         System.out.println(Arrays.stream(dp).max().getAsInt());
         /*
         * OptionalInt[4] -> getAsInt로 값을 꺼내줌

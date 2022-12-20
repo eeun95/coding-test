@@ -1,27 +1,23 @@
 package baekjoon;
 
+import java.io.*;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int T = Integer.valueOf(br.readLine());
 
-        int d = sc.nextInt();
-        int i = sc.nextInt();
-        int c = sc.nextInt();
+        for (int i = 0; i < T; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int a= Integer.valueOf(st.nextToken());
+            int b= Integer.valueOf(st.nextToken());
 
-        if (d == i && d == c && i == c) {
-            System.out.println(10000+(d*1000));
-        } else if((d==i) || (d==c) || (i==c)) {
-            if(d==i || d==c) {
-                System.out.println(1000+(d*100));
-            } else {
-                System.out.println(1000+(i*100));
-            }
-        } else {
-            int max = Math.max(d, i);
-            max = Math.max(max, c);
-            System.out.println(max*100);
+            bw.write((a + b) + "\n");
         }
+        bw.flush();
+        bw.close();
     }
 }
