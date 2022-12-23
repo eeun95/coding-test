@@ -1,23 +1,31 @@
 package baekjoon;
 
 import java.io.*;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int T = Integer.valueOf(br.readLine());
+        String N = br.readLine();
+        int n = Integer.valueOf(N);
 
-        for (int i = 0; i < T; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-            int a= Integer.valueOf(st.nextToken());
-            int b= Integer.valueOf(st.nextToken());
 
-            bw.write((a + b) + "\n");
+        int count = 0;
+
+        while(true) {
+            int a = Integer.valueOf(N.substring(0, 1));
+            int b = Integer.valueOf(N.substring(1));
+
+            int front = b;
+            int back = (a + b > 10) ? (a + b - 10) : (a + b);
+
+            int num = Integer.valueOf(front + "" + back);
+
+            //System.out.println(n+" "+num);
+            N = String.valueOf(num);
+            count++;
+            if(n==num) break;
         }
-        bw.flush();
-        bw.close();
+        System.out.println(count);
     }
 }
