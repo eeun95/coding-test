@@ -1,33 +1,21 @@
 package baekjoon;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String N = br.readLine();
-        int n = Integer.valueOf(N);
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
 
+        int[] A = new int[N];
 
-        int count = 0;
-
-        while(true) {
-            if(Integer.parseInt(N)<10) {
-                N = "0"+N;
-            }
-            int a = Integer.parseInt(N.substring(0, 1));
-            int b = Integer.parseInt(N.substring(1));
-
-            int front = b;
-            int back = (a + b >= 10) ? (a + b - 10) : (a + b);
-
-            //System.out.println(front+" "+back);
-            N = front+""+back;
-            //System.out.println("N = "+N);
-            count++;
-            if(n==Integer.parseInt(N)) break;
+        for (int i = 0; i < N; i++) {
+            A[i] = sc.nextInt();
         }
-        System.out.println(count);
+        Arrays.sort(A);
+        System.out.println(A[0] + " " + A[N - 1]);
     }
 }
