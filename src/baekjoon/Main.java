@@ -13,18 +13,20 @@ public class Main {
         int count = 0;
 
         while(true) {
+            if(Integer.parseInt(N)<10) {
+                N = "0"+N;
+            }
             int a = Integer.parseInt(N.substring(0, 1));
             int b = Integer.parseInt(N.substring(1));
 
             int front = b;
-            int back = (a + b > 10) ? (a + b - 10) : (a + b);
+            int back = (a + b >= 10) ? (a + b - 10) : (a + b);
 
-            int num = Integer.parseInt(front + "" + back);
-
-            System.out.println(n+" "+num);
-            N = String.valueOf(num);
+            //System.out.println(front+" "+back);
+            N = front+""+back;
+            //System.out.println("N = "+N);
             count++;
-            if(n==num) break;
+            if(n==Integer.parseInt(N)) break;
         }
         System.out.println(count);
     }
