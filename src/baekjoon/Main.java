@@ -13,15 +13,15 @@ public class Main {
         int count = 0;
 
         while(true) {
-            int a = Integer.valueOf(N.substring(0, 1));
-            int b = Integer.valueOf(N.substring(1));
+            int a = Integer.parseInt(N.substring(0, 1));
+            int b = Integer.parseInt(N.substring(1));
 
             int front = b;
             int back = (a + b > 10) ? (a + b - 10) : (a + b);
 
-            int num = Integer.valueOf(front + "" + back);
+            int num = Integer.parseInt(front + "" + back);
 
-            //System.out.println(n+" "+num);
+            System.out.println(n+" "+num);
             N = String.valueOf(num);
             count++;
             if(n==num) break;
