@@ -14,7 +14,7 @@ public class Main {
         for (int i = 1; i <= 28; i++) {
             A[sc.nextInt()] = true;
         }
-        for (int i = 1; i <= 28; i++) {
+        for (int i = 1; i <= 30; i++) {
             if(!A[i]) {
                 System.out.println(i);
             }
