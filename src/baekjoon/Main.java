@@ -2,22 +2,21 @@ package baekjoon;
 
 import java.io.*;
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
 
-        boolean[] A = new boolean[31];
-        for (int i = 1; i <= 28; i++) {
-            A[sc.nextInt()] = true;
-        }
-        for (int i = 1; i <= 30; i++) {
-            if(!A[i]) {
-                System.out.println(i);
+        List list = new ArrayList();
+        int[] A = new int[10];
+        for (int i = 0; i < 10; i++) {
+            int num = sc.nextInt()%42;
+            if(!list.contains(num)) {
+                list.add(num);
             }
         }
+        System.out.println(list.size());
+
     }
 }
