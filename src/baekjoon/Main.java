@@ -10,23 +10,22 @@ public class Main {
         int T = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < T; i++) {
-            String quiz = br.readLine();
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int N = Integer.parseInt(st.nextToken());
 
-            int count = 0;
-            int total = 0;
-            for (int j = 0; j < quiz.length(); j++) {
-                String answer = quiz.substring(j, j + 1);
-                if(answer.equals("O")) {
-                    count++;
-                    //System.out.println(count);
-                    total += count;
-                } else {
-                    count=0;
-                    //System.out.println(count);
+            double[] score = new double[N];
+            for (int j = 0; j < N; j++) {
+                score[j] = Double.parseDouble(st.nextToken());
+            }
+            double avg = Arrays.stream(score).sum()/N;
+            double high=0;
+            for (int k = 0; k < N; k++) {
+                if (score[k] > avg) {
+                    high++;
                 }
             }
-            System.out.println(total);
-        }
+            System.out.println(String.format("%.3f",high/N*100)+"%");
 
+        }
     }
 }
