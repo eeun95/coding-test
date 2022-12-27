@@ -6,22 +6,27 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
 
-        int N = sc.nextInt();
-        double[] A = new double[N];
-        for (int i = 0; i < N; i++) {
-            A[i] = sc.nextInt();
+        for (int i = 0; i < T; i++) {
+            String quiz = br.readLine();
+
+            int count = 0;
+            int total = 0;
+            for (int j = 0; j < quiz.length(); j++) {
+                String answer = quiz.substring(j, j + 1);
+                if(answer.equals("O")) {
+                    count++;
+                    //System.out.println(count);
+                    total += count;
+                } else {
+                    count=0;
+                    //System.out.println(count);
+                }
+            }
+            System.out.println(total);
         }
-
-        Arrays.sort(A);
-
-        double sum = 0;
-        double max = A[N-1];
-        for (int i = 0; i < N; i++) {
-            sum += (A[i]/max)*100;
-        }
-        System.out.println(sum / N);
 
     }
 }
