@@ -8,15 +8,20 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
 
-        List list = new ArrayList();
-        int[] A = new int[10];
-        for (int i = 0; i < 10; i++) {
-            int num = sc.nextInt()%42;
-            if(!list.contains(num)) {
-                list.add(num);
-            }
+        int N = sc.nextInt();
+        double[] A = new double[N];
+        for (int i = 0; i < N; i++) {
+            A[i] = sc.nextInt();
         }
-        System.out.println(list.size());
+
+        Arrays.sort(A);
+
+        double sum = 0;
+        double max = A[N-1];
+        for (int i = 0; i < N; i++) {
+            sum += (A[i]/max)*100;
+        }
+        System.out.println(sum / N);
 
     }
 }
