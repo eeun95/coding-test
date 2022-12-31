@@ -20,7 +20,9 @@ public class Main {
         for (int i = 0; i < s.length(); i++) {
             String ss = s.substring(i, i + 1);
             //System.out.println(i+" "+ss);
-            map.put(ss, i);
+            if(map.get(ss) == -1) {
+                map.put(ss, i);
+            }
         }
         for (String key : map.keySet()) {
             System.out.print(map.get(key)+" ");
