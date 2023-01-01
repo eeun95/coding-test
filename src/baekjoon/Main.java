@@ -1,43 +1,38 @@
 package baekjoon;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = br.readLine();
-        s = s.toLowerCase();        // 소문자로 다 바꿔 ~!
 
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 97; i <= 122; i++) {
-            String ch = String.valueOf((char) i);
-            map.put(ch, 0);
-        }
+        int[] arr = new int[26]; // 영문자의 개수는 26개임
 
-        for (int i = 0; i < s.length(); i++) {
-            String ss = s.substring(i, i + 1);
-            map.put(ss, map.get(ss) + 1);
-        }
+        int c = System.in.read();
 
-        List<String> list = new ArrayList<>(map.keySet());
+        while (c > 64) {	// 공백을 입력받는 순간 종료됨
 
-        Collections.sort(list, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
-
-        int count = 0;
-        int max = 0;
-        String result = "";
-        for (String k : list) {
-            if(count > 1) break;
-            if(count==0) {
-                max = map.get(k);
-                result = k;
+            if (c < 91) {
+                arr[c - 65]++;
+            } else {
+                arr[c - 97]++;
             }
-            if(count==1 && max == map.get(k)) {
-                result = "?";
-            }
-            count++;
+            c = System.in.read();
         }
-        System.out.println(result.toUpperCase());
+
+
+        int max = -1;
+        int ch = -2;	// ? 는 63 이다.
+
+        for (int i = 0; i < 26; i++) {
+
+            if (arr[i] > max) {
+                max = arr[i];
+                ch = i;
+            } else if (arr[i] == max) {
+                ch = -2;
+            }
+        }
+        System.out.print((char) (ch+65));
     }
+
 }
