@@ -20,7 +20,7 @@ public class Main {
             String [] s = br.readLine().split(" ");
             for (int j = 0; j < M; j++) {
                 if(i>=N) {
-                    idx = i-3;
+                    idx = i-N;
                     b[idx][j] = Integer.parseInt(s[j]);
                 } else {
                     a[idx][j] = Integer.parseInt(s[j]);
