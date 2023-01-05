@@ -10,16 +10,28 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int N = Integer.parseInt(st.nextToken());
-        int k = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
 
-        StringTokenizer st2 = new StringTokenizer(br.readLine(), " ");
-        List<Integer> x = new ArrayList<>();
-        for (int i = 0; i < N; i++) {
-            x.add(Integer.parseInt(st2.nextToken()));
+
+        int [][] a = new int[N][M];
+        int [][] b = new int[N][M];
+        for (int i = 0; i < N *2 ; i++) {
+            int idx = i;
+            String [] s = br.readLine().split(" ");
+            for (int j = 0; j < M; j++) {
+                if(i>=N) {
+                    idx = i-3;
+                    b[idx][j] = Integer.parseInt(s[j]);
+                } else {
+                    a[idx][j] = Integer.parseInt(s[j]);
+                }
+            }
         }
-
-        Collections.sort(x, Collections.reverseOrder());
-        System.out.println(x.get(k-1));
-
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                System.out.print(a[i][j]+b[i][j]+" ");
+            }
+            System.out.println();
+        }
     }
 }
