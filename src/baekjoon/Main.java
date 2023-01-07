@@ -7,11 +7,22 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        StringBuffer sb = new StringBuffer();
-        String s = String.valueOf(sb.append(st.nextToken() + " " + st.nextToken()).reverse());
-        System.out.println(Math.max(Integer.parseInt(s.split(" ")[0]), Integer.parseInt(s.split(" ")[1])));
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
+        int N = Integer.parseInt(br.readLine());
+        int[] arr = new int[N];
+
+        for(int i = 0; i < N; i++){
+            arr[i] = Integer.parseInt(br.readLine());
+        }
+
+        Arrays.sort(arr);
+
+        for(int i = 0; i < N; i++){
+            sb.append(arr[i]).append('\n');
+        }
+
+        System.out.println(sb);
     }
 }
