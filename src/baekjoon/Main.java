@@ -18,7 +18,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         for (int i : a) {
             // 하나씩 출력하면 시간초과 나기때문에 빌더 사용
-            sb.append(a).append("\n");
+            sb.append(i).append("\n");
         }
         System.out.println(sb);
     }
