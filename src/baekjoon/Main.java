@@ -8,21 +8,16 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+        String s = br.readLine();
 
-        int N = Integer.parseInt(br.readLine());
-        int[] arr = new int[N];
-
-        for(int i = 0; i < N; i++){
-            arr[i] = Integer.parseInt(br.readLine());
+        Integer[] a = new Integer[s.length()];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = Integer.parseInt(s.substring(i, i + 1));
         }
 
-        Arrays.sort(arr);
-
-        for(int i = 0; i < N; i++){
-            sb.append(arr[i]).append('\n');
+        Arrays.sort(a, Comparator.reverseOrder());
+        for (int i : a) {
+            System.out.print(i);
         }
-
-        System.out.println(sb);
     }
 }
