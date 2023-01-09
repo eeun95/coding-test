@@ -22,10 +22,14 @@ public class Main_2941 {
 
         int count = 0;
         for (String s1 : list) {
-            int i = s.length() - s.replace(s1, "").length();
-            count += (i/s1.length());
-            s = s.replace(s1, "");
+            if(s.contains(s1)) {
+                int i = s.length() - s.replace(s1, "").length();
+                count += (i/s1.length());
+                //System.out.print(s + " > ");
+                s = s.replace(s1, " ");
+                //System.out.println(s);
+            }
         }
-        System.out.println(count+s.length());
+        System.out.println(s.replace(" ", "").length()+count);
     }
 }
