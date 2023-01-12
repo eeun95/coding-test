@@ -6,8 +6,9 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main_2444 {
-    static int N, M;
+    static int N, M, cnt;
     static boolean[] visit;
+    static int[] check;
     static ArrayList<ArrayList<Integer>> bfs = new ArrayList<>();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,6 +21,7 @@ public class Main_2444 {
             bfs.add(new ArrayList<>());
         }
         visit = new boolean[N+1];
+        check = new int[N+1];
         for (int i = 0; i < M; i++) {
             StringTokenizer st2 = new StringTokenizer(br.readLine(), " ");
             int u = Integer.parseInt(st2.nextToken());
@@ -34,19 +36,28 @@ public class Main_2444 {
         }
 
         bfs(R);
+
+        for (int i = 1; i <= N; i++) {
+            System.out.println(check[i]);
+        }
     }
 
     public static void bfs(int start) {
-        if(!visit[start]) {
-            System.out.println(start);
-            visit[start] = true;
-            Queue<Integer> q = new LinkedList<>();
-            q.add(start);
-            while(!q.isEmpty()) {
-                int u = q.poll();
-                for (Integer integer : bfs.get(u)) {
-                    bfs(integer);
+        Queue<Integer> q = new LinkedList<>();
+        visit[start] = true;
+        check[start] = cnt++;
+        q.add(start);
+        while(!q.isEmpty()) {
+            int u = q.poll();
+            //System.out.println(">"+u);
+            check[u] = cnt++;
+
+            for (Integer integer : bfs.get(u)) {
+                if(visit[integer]) {
+                    continue;
                 }
+                q.add(integer);
+                visit[integer] = true;
             }
         }
     }
