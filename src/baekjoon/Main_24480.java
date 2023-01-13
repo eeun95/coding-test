@@ -37,6 +37,7 @@ public class Main_24480 {
         for (ArrayList<Integer> d : dfs) {
             Collections.sort(d, Collections.reverseOrder());
         }
+
         dfs(R);
         for (int i : seq) {
             System.out.println(i);

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main_2444 {
+public class Main_24444 {
     static int N, M, cnt;
     static boolean[] visit;
     static int[] check;
