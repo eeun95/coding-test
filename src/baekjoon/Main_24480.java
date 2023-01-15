@@ -21,7 +21,7 @@ public class Main_24480 {
         int R = Integer.parseInt(st.nextToken());   // 시작 정점
 
         visit = new boolean[N+1];
-        seq = new int[N];
+        seq = new int[N+1];
         for (int i = 0; i < N+1; i++) {
             dfs.add(new ArrayList<>());
         }
@@ -39,13 +39,14 @@ public class Main_24480 {
         }
 
         dfs(R);
-        for (int i : seq) {
-            System.out.println(i);
+        for (int i = 1; i <= N; i++) {
+            System.out.println(seq[i]);
         }
+
     }
     public static void dfs(int start) {
         if (!visit[start]) {
-            seq[sequence++] = start;
+            seq[start] = ++sequence;
             visit[start] = true;
             for (Integer integer : dfs.get(start)) {
                 dfs(integer);
