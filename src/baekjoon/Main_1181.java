@@ -16,16 +16,20 @@ public class Main_1181 {
             map.put(s, s.length());
         }
 
+
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(map.entrySet());
-        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                //System.out.println(o1.getKey() + " " + o1.getValue() + " / " + o2.getKey() + " " + o2.getValue());
-                if(o1.getValue() == o2.getValue()) {
-                    return o1.getKey().compareTo(o2.getKey());
-                } else {
-                    return o1.getValue() - o2.getValue();
-                }
+//        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
+//            @Override
+//            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+//                return 0;
+//            }
+//        });
+        entryList.sort((o1, o2) -> {
+            //System.out.println(o1.getKey() + " " + o1.getValue() + " / " + o2.getKey() + " " + o2.getValue());
+            if(o1.getValue() == o2.getValue()) {
+                return o1.getKey().compareTo(o2.getKey());
+            } else {
+                return o1.getValue() - o2.getValue();
             }
         });
         for (Map.Entry<String, Integer> entry : entryList) {
