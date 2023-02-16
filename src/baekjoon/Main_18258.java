@@ -5,36 +5,34 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.StringTokenizer;
 
 public class Main_18258 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         Deque<Integer> dq = new LinkedList<>();
         int N = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < N; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-            String cmd = st.nextToken();
-            if(st.hasMoreTokens()) {
-                dq.push(Integer.valueOf(st.nextToken()));
+            String cmd = br.readLine();
+            if(cmd.equals("front")) {
+                if(!dq.isEmpty()) sb.append(dq.peekFirst()+"\n");
+                else sb.append("-1"+"\n");
+            } else if(cmd.equals("back")) {
+                if(!dq.isEmpty()) sb.append(dq.peekLast()+"\n");
+                else sb.append("-1"+"\n");
+            } else if(cmd.equals("empty")) {
+                if(!dq.isEmpty()) sb.append("0"+"\n");
+                else sb.append("1"+"\n");
+            } else if (cmd.equals("size")) {
+                sb.append(dq.size()+"\n");
+            } else if (cmd.equals("pop")) {
+                if(!dq.isEmpty()) sb.append(dq.pop()+"\n");
+                else sb.append("-1"+"\n");
             } else {
-                if(cmd.equals("front")) {
-                    if(!dq.isEmpty()) System.out.println(dq.peekFirst());
-                    else System.out.println("-1");
-                } else if(cmd.equals("back")) {
-                    if(!dq.isEmpty()) System.out.println(dq.peekLast());
-                    else System.out.println("-1");
-                } else if(cmd.equals("empty")) {
-                    if(!dq.isEmpty()) System.out.println("0");
-                    else System.out.println("1");
-                } else if (cmd.equals("size")) {
-                    System.out.println(dq.size());
-                } else if (cmd.equals("pop")) {
-                    if(!dq.isEmpty()) System.out.println(dq.pop());
-                    else System.out.println("-1");
-                }
+                dq.add(Integer.valueOf(cmd.split(" ")[1]));
             }
         }
+        System.out.println(sb);
     }
 }
