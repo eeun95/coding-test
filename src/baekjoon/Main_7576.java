@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main_7576 {
@@ -40,15 +42,21 @@ public class Main_7576 {
         int[] dy = new int[]{0, 0, -1, 1};
 
         if(!visit[i][j]) {
-            System.out.println("HI?");
             visit[i][j] = true;
-            for (int k = 0; k < 4; k++) {
-                int nx = i+dx[k];
-                int ny = j+dy[k];
+            Queue<int[]> q = new LinkedList<>();
+            q.add(new int[]{i,j});
+            while (!q.isEmpty()) {
+                System.out.println("TT");
+                for (int k = 0; k < 4; k++) {
+                    int[] loc = q.poll();
+                    System.out.println(Arrays.toString(loc));
+                    int nx = loc[0] + dx[k];
+                    int ny = loc[1] + dy[k];
 
-                if (nx >= 0 && nx < N && ny >= 0 && ny < M) {
-                    if(!visit[nx][ny] && tomato[nx][ny] != -1) {
-                        tomatoDelicious(nx, ny);
+                    if (nx >= 0 && nx < N && ny >= 0 && ny < M) {
+                        if (!visit[nx][ny] && tomato[nx][ny] != -1) {
+                            q.add(new int[]{nx, ny});
+                        }
                     }
                 }
             }
