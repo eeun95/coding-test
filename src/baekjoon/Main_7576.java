@@ -46,7 +46,7 @@ public class Main_7576 {
             Queue<int[]> q = new LinkedList<>();
             q.add(new int[]{i,j});
             while (!q.isEmpty()) {
-                System.out.println("TT");
+                System.out.println(i+" "+j);
                 int[] loc = q.poll();
                 for (int k = 0; k < 4; k++) {
                     int nx = loc[0] + dx[k];
@@ -54,6 +54,8 @@ public class Main_7576 {
 
                     if (nx >= 0 && nx < N && ny >= 0 && ny < M) {
                         if (!visit[nx][ny] && tomato[nx][ny] != -1) {
+                            System.out.println(nx+" "+ny+" 큐 추가");
+                            visit[nx][ny] = true;
                             q.add(new int[]{nx, ny});
                         }
                     }
