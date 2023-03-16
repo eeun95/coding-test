@@ -47,9 +47,8 @@ public class Main_7576 {
             q.add(new int[]{i,j});
             while (!q.isEmpty()) {
                 System.out.println("TT");
+                int[] loc = q.poll();
                 for (int k = 0; k < 4; k++) {
-                    int[] loc = q.poll();
-                    System.out.println(Arrays.toString(loc));
                     int nx = loc[0] + dx[k];
                     int ny = loc[1] + dy[k];
 
