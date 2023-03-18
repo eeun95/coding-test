@@ -9,9 +9,10 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main_7576 {
-    static int M,N;
+    static int M,N,cnt;
     static int[][] tomato;
     static boolean[][] visit;
+    static boolean[] day;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
@@ -21,6 +22,7 @@ public class Main_7576 {
 
         tomato = new int[N][M];
         visit = new boolean[N][M];
+        day = new boolean[N * M];
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -46,8 +48,8 @@ public class Main_7576 {
             Queue<int[]> q = new LinkedList<>();
             q.add(new int[]{i,j});
             while (!q.isEmpty()) {
-                System.out.println(i+" "+j);
                 int[] loc = q.poll();
+                System.out.println(Arrays.toString(loc)+"시작");
                 for (int k = 0; k < 4; k++) {
                     int nx = loc[0] + dx[k];
                     int ny = loc[1] + dy[k];
