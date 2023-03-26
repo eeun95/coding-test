@@ -19,21 +19,28 @@ public class Main_10811 {
             String[] b = br.readLine().split(" ");
             int iBasket = Integer.parseInt(b[0]);
             int jBasket = Integer.parseInt(b[1]);
-            int tmp = basket[iBasket];
-            basket[iBasket] = basket[jBasket];
-            basket[jBasket] = tmp;
+
+            for (int j = iBasket; j <= jBasket; j++, jBasket--) {
+                int tmp = basket[j];
+                basket[j] = basket[jBasket];
+                basket[jBasket] = tmp;
+            }
         }
 
-        boolean first = true;
+        boolean b = true;
         StringBuilder sb = new StringBuilder();
         for(int i : basket) {
-            if(first) {
-                first = false;
+            if(b) {
+                b = false;
                 continue;
             }
             sb.append(i+" ");
         }
         System.out.println(sb);
 
+        // 1 2 3 4 5
+        // 2 1 3 4 5
+        // 2 1 4 3 5
+        // 3 4 1 2 5
     }
 }

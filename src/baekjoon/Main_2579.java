@@ -1,8 +1,6 @@
 package baekjoon;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class Main_2579 {
     static Integer[] dp;
