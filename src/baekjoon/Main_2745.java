@@ -14,8 +14,10 @@ public class Main_2745 {
         // ex.ZZZZZ 36
         // (35*36^4)+(35*36^3)+(35*36^2)+(35*36)+(35*1)
 
-        for (int i = 0; i < N.length(); i++) {
-            char c = N.charAt(i);
+        long sum = 0;
+        int j=0;
+        for (int i = N.length()-1; i >= 0; i--,j++) {
+            char c = N.charAt(j);
             int ascii = 0;
             if(c >= '0' && c <= '9') {
                 // 0 빼주는 이유는 '0'이 아스키코드 48이라서
@@ -24,8 +26,8 @@ public class Main_2745 {
             } else {
                 ascii = c-55;
             }
-            System.out.println();
+            sum += ascii * (Math.pow(B, i));
         }
-
+        System.out.println(sum);
     }
 }
