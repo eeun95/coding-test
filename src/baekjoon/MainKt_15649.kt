@@ -1,5 +1,5 @@
 package baekjoon
 
-fun() {
+fun main() {
 
 }
