@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.OptionalInt;
 import java.util.StringTokenizer;
 
 public class Main_1932 {
@@ -19,26 +20,29 @@ public class Main_1932 {
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
             int cnt = 0;
             while(st.hasMoreTokens()) {
-                array[i][cnt] = Integer.parseInt(st.nextToken());
+                int num = Integer.parseInt(st.nextToken());
+                array[i][cnt] = num;
+                dp[i][cnt] = num;
+                cnt++;
             }
         }
         for (int i = 1; i < n; i++) {
-            for (int j = 1; j < n; j++) {
+            for (int j = 0; j < n; j++) {
                 dp(i,j);
             }
         }
-        Arrays.stream(dp).toList().forEach(
-                ints -> Arrays.stream(ints).forEach(i-> System.out.print(i)));
+
+        Integer max = Arrays.stream(dp[n - 1]).max().getAsInt();
+        System.out.println(max);
     }
     static void dp(int i, int j) {
         if(j==0) {
-            dp[i][j] = array[i-1][j] + array[i][j];
+            dp[i][j] = dp[i-1][j] + dp[i][0];
         } else if(i==j) {
-            dp[i][j] = array[i-1][j-1] + array[i][j];
+            dp[i][j] = dp[i-1][j-1] + dp[i][j];
         } else {
-            dp[i][j] = Math.max(array[i - 1][j - 1] + array[i][j], array[i - 1][j]);
+            dp[i][j] = Math.max(dp[i - 1][j - 1] + dp[i][j], dp[i - 1][j]+dp[i][j]);
         }
-        System.out.println(i+" "+j+" "+dp[i][j]);
     }
 }
 
