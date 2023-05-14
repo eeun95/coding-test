@@ -1,6 +1,6 @@
 package baekjoon
 
-import java.util.StringTokenizer
+import java.util.*
 
 val n = readLine()!!.toInt()
 var dp = Array(n) {IntArray(n)}
@@ -20,6 +20,9 @@ fun main() {
             dp(i, j)
         }
     }
+
+    val max = Arrays.stream(dp[n - 1]).max().asInt
+    println(max)
 }
 fun dp(i : Int, j : Int){
     if(j==0) {
