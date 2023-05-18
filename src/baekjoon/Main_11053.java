@@ -15,24 +15,33 @@ public class Main_11053 {
 
         array = new int[N];
         dp = new int[N];
-        IntStream.range(0, N).forEach(i -> dp[i] = 1);
+
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int i=0;
         while (st.hasMoreTokens()) {
             array[i] = Integer.parseInt(st.nextToken());
             i++;
         }
-        for (int j = 1; j < N; j++) {
+        // top-down 재귀방식
+        for (int j = 0; j < N; j++) {
             dp(j);
         }
         System.out.println(Arrays.toString(dp));
     }
 
-    public static int dp(int n) {
-        if(n==0) return 1;
-        if(array[n-1] < array[n]) {
-            return dp[n-1]+1;
+    static int dp(int n) {
+        if(dp[n] == 0) {
+            // 탐색하지 않았을 경우 1로 초기화
+            dp[n] = 1;
+
+            // 직전값에 +1 더한값이 더 큰지
+            // 처음부터 다시 선택했을 때 값이 더 큰지
+            // 반복문 돌리면서 현재 파라미터보다 수가 작은 애들만 체크
+            for (int i = n - 1; i >= 0; i--) {
+                if(array[i] < array[n])
+                    dp[n] = Math.max(dp[n], dp(i)+1);
+            }
         }
-        return dp(n-1);
+        return dp[n];
     }
 }
