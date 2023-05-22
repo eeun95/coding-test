@@ -2,8 +2,8 @@ package baekjoon
 
 import java.util.*
 
-val n = readLine()!!.toInt()
-var dp = Array(n) {IntArray(n)}
+private val n = readLine()!!.toInt()
+private var dp = Array(n) {IntArray(n)}
 
 fun main() {
     for (i in 0 until n) {

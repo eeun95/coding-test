@@ -2,8 +2,8 @@ package baekjoon
 
 import java.util.*
 
-var array = emptyArray<Int>()
-var dp = emptyArray<Int>()
+private var array = emptyArray<Int>()
+private var dp = emptyArray<Int>()
 
 fun main() {
     var N = readLine()!!.toInt()
@@ -17,10 +17,10 @@ fun main() {
     }
 
     for(j in 0 until N) {
-        dpTopDown(j)
+        dp(j)
     }
 }
-fun dpTopDown(n : Int) : Int {
+fun dp(n : Int) : Int {
     if(dp[n] == 0) {
         dp[n] = 1
 
