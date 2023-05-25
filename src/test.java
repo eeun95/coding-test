@@ -10,6 +10,8 @@ public class test {
         //System.out.println(numberToString("240000000000"));   //2400백억
         System.out.println(numberToString("684000"));   //68만 4천
     }
+
+    // 회사 깃 계정 연동 테스트
     public static String numberToString(String number) {
         String result = "";
         String[] unit = {"", "천", "만", "억", "조", "경"};
