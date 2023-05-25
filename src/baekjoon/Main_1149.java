@@ -24,15 +24,5 @@ public class Main_1149 {
             }
         }
 
-        // 0:red 1:green 2:blue
-    }
-    public int dp(int color, int i, int j) {
-        if(color == 0) {
-        } else if(color == 1) {
-
-        } else {
-
-        }
-        return dp[i][j];
     }
 }
