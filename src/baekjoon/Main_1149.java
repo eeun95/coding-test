@@ -23,6 +23,15 @@ public class Main_1149 {
                 cnt++;
             }
         }
-
+    }
+    public int dp(int color, int i, int j) {
+        if(color==0) {
+            dp[i][j] = home[i][j] + Math.min(dp(1, i, j), dp(2, i, j));
+        } else if(color==1) {
+            dp[i][j] = home[i][j] + Math.min(dp(0, i, j), dp(2, i, j));
+        } else if(color==2) {
+            dp[i][j] = home[i][j] + Math.min(dp(0, i, j), dp(1, i, j));
+        }
+        return dp[i][j];
     }
 }
