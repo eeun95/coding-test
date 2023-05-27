@@ -13,25 +13,33 @@ public class Main_1149 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        home = new int[N][N];
-        dp = new int[N][N];
+        home = new int[N][3];
+        dp = new int[N][3];
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-            int cnt = 0;
-            while(st.hasMoreTokens()) {
-                home[i][cnt] = Integer.parseInt(st.nextToken());
-                cnt++;
+            home[i][0] = Integer.parseInt(st.nextToken());
+            home[i][1] = Integer.parseInt(st.nextToken());
+            home[i][2] = Integer.parseInt(st.nextToken());
+
+        }
+        dp[0][0] = home[0][0];
+        dp[0][1] = home[0][1];
+        dp[0][2] = home[0][2];
+
+        System.out.println(Math.min(dp(0, N-1), Math.min(dp(1, N-1), dp(2, N-2))));
+    }
+
+    static int dp(int color, int N) {
+
+        if(dp[N][color] == 0) {
+            if (color == 0) {
+                dp[N][color] = home[N][color] + Math.min(dp(1, N-1), dp(2, N-1));
+            } else if (color == 1) {
+                dp[N][color] = home[N][color] + Math.min(dp(0, N-1), dp(2, N-1));
+            } else if (color == 2) {
+                dp[N][color] = home[N][color] + Math.min(dp(0, N-1), dp(1, N-1));
             }
         }
-    }
-    public int dp(int color, int i, int j) {
-        if(color==0) {
-            dp[i][j] = home[i][j] + Math.min(dp(1, i, j), dp(2, i, j));
-        } else if(color==1) {
-            dp[i][j] = home[i][j] + Math.min(dp(0, i, j), dp(2, i, j));
-        } else if(color==2) {
-            dp[i][j] = home[i][j] + Math.min(dp(0, i, j), dp(1, i, j));
-        }
-        return dp[i][j];
+        return dp[N][color];
     }
 }
