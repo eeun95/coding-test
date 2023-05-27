@@ -3,6 +3,7 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -26,18 +27,21 @@ public class Main_1149 {
         dp[0][1] = home[0][1];
         dp[0][2] = home[0][2];
 
-        System.out.println(Math.min(dp(0, N-1), Math.min(dp(1, N-1), dp(2, N-2))));
+        System.out.println(Math.min(dp(0, N- 1), Math.min(dp(1, N - 1), dp(2, N - 1))));
+//        System.out.println(Arrays.toString(dp[0]));
+//        System.out.println(Arrays.toString(dp[1]));
+//        System.out.println(Arrays.toString(dp[2]));
     }
 
     static int dp(int color, int N) {
 
         if(dp[N][color] == 0) {
             if (color == 0) {
-                dp[N][color] = home[N][color] + Math.min(dp(1, N-1), dp(2, N-1));
+                dp[N][color] = Math.min(dp(1, N-1), dp(2, N-1)) + home[N][color];
             } else if (color == 1) {
-                dp[N][color] = home[N][color] + Math.min(dp(0, N-1), dp(2, N-1));
+                dp[N][color] = Math.min(dp(0, N-1), dp(2, N-1)) + home[N][color];
             } else if (color == 2) {
-                dp[N][color] = home[N][color] + Math.min(dp(0, N-1), dp(1, N-1));
+                dp[N][color] = Math.min(dp(0, N-1), dp(1, N-1)) + home[N][color] ;
             }
         }
         return dp[N][color];
