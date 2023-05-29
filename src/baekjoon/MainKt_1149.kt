@@ -30,11 +30,11 @@ fun main() {
     fun dp(color:Int, N:Int):Int {
         if(dp[N][color]==0) {
             if (color == 0) {
-                Main_1149.dp[N][color] = Math.min(Main_1149.dp(1, N - 1), Main_1149.dp(2, N - 1)) + Main_1149.home[N][color]
+                dp[N][color] = Math.min(dp(1, N - 1), dp(2, N - 1)) + home[N][color]
             } else if (color == 1) {
-                Main_1149.dp[N][color] = Math.min(Main_1149.dp(0, N - 1), Main_1149.dp(2, N - 1)) + Main_1149.home[N][color]
+                dp[N][color] = Math.min(dp(0, N - 1), dp(2, N - 1)) + home[N][color]
             } else if (color == 2) {
-                Main_1149.dp[N][color] = Math.min(Main_1149.dp(0, N - 1), Main_1149.dp(1, N - 1)) + Main_1149.home[N][color]
+                dp[N][color] = Math.min(dp(0, N - 1), dp(1, N - 1)) + home[N][color]
             }
         }
         return dp[N][color]
