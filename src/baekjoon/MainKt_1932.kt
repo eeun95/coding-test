@@ -24,7 +24,7 @@ fun main() {
     val max = Arrays.stream(dp[n - 1]).max().asInt
     println(max)
 }
-fun dp(i : Int, j : Int){
+private fun dp(i : Int, j : Int){
     if(j==0) {
         dp[i][j] = dp[i-1][j] + dp[i][0]
     } else if(i==j) {

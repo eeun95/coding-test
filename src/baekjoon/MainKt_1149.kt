@@ -27,16 +27,16 @@ fun main() {
 
     println(Math.min(dp(0, N - 1), Math.min(dp(1, N - 1), dp(2, N - 1))))
 
-    fun dp(color:Int, N:Int):Int {
-        if(dp[N][color]==0) {
-            if (color == 0) {
-                dp[N][color] = Math.min(dp(1, N - 1), dp(2, N - 1)) + home[N][color]
-            } else if (color == 1) {
-                dp[N][color] = Math.min(dp(0, N - 1), dp(2, N - 1)) + home[N][color]
-            } else if (color == 2) {
-                dp[N][color] = Math.min(dp(0, N - 1), dp(1, N - 1)) + home[N][color]
-            }
+}
+private fun dp(color:Int, N:Int):Int {
+    if(dp[N][color]==0) {
+        if (color == 0) {
+            dp[N][color] = Math.min(dp(1, N - 1), dp(2, N - 1)) + home[N][color]
+        } else if (color == 1) {
+            dp[N][color] = Math.min(dp(0, N - 1), dp(2, N - 1)) + home[N][color]
+        } else if (color == 2) {
+            dp[N][color] = Math.min(dp(0, N - 1), dp(1, N - 1)) + home[N][color]
         }
-        return dp[N][color]
     }
+    return dp[N][color]
 }
