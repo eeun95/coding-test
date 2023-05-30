@@ -11,23 +11,16 @@ public class Main_1912 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        int[] num = new int[n];
-        int[] dp = new int[n];
+        int[] array = new int[n];
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
-        int idx=0;
-        while (st.hasMoreTokens()) {
-            num[idx] = Integer.valueOf(st.nextToken());
-            idx++;
+        int cnt = 0;
+        while(st.hasMoreTokens()) {
+            array[cnt] = Integer.parseInt(st.nextToken());
+            cnt++;
         }
 
-        dp[0] = num[0];
-        for (int i = 1; i < n; i++) {
-            //연속된 합과 현재값을 더한것보다 현재값이 크면 갱신
-            dp[i] = Math.max(dp[i-1]+num[i], num[i]);
-            //System.out.println(dp[i]);
-        }
-        System.out.println(Arrays.stream(dp).max().getAsInt());
-        //Arrays.stream(num).forEach(System.out::println);
+        // 직전 수에 현재 수를 더한게 더큰지, 직전 수까지만 더하는게 더 큰지
+        // ex. 10 -4 3 1 5 6 -35 12 21 -1
+        System.out.println(Arrays.toString(array));
     }
 }
