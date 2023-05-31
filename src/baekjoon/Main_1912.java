@@ -32,15 +32,12 @@ public class Main_1912 {
             .
         */
         dp[0] = array[0];
-        dp(n-1);
-        System.out.println(Arrays.toString(dp));
+        for (int i = 1; i < n; i++) {
+            dp[i] = Math.max(dp[i - 1] + array[i], array[i]);
+        }
+        //System.out.println(Arrays.toString(dp));
         System.out.println(Arrays.stream(dp).max().getAsInt());
 
     }
-    static int dp(int n) {
-        for (int i = 0; i < n; i++) {
-            dp[n] = Math.max(array[n]+dp(i), array[n]+array[n-1]);
-        }
-        return dp[n];
-    }
+
 }
