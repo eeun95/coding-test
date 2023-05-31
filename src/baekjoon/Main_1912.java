@@ -21,18 +21,26 @@ public class Main_1912 {
             cnt++;
         }
 
-        // 직전 수에 현재 수를 더한게 더큰지, 직전 수까지만 더하는게 더 큰지
-        // ex. 10 -4 3 1 5 6 -35 12 21 -1
+        /*
+            직전 수에 현재 수를 더한게 큰지, 직전까지의 합에 현재 수를 더한게 큰지 체크하여 각 인덱스에서 가질 수 있는 최대를 구한다
+            ex. 10 -4 3 1 5 6 -35 12 21 -1
+            인덱스 0에서 가질 수 있는 max 10
+            인덱스 1에서 가질 수 있는 max (10+(-4) > -4) = 6
+            인덱스 2에서 가질 수 있는 max (10+(-4)+3) > 3 = 9
+            .
+            .
+            .
+        */
         dp[0] = array[0];
-        dp(9);
+        dp(n-1);
         System.out.println(Arrays.toString(dp));
+        System.out.println(Arrays.stream(dp).max().getAsInt());
 
     }
     static int dp(int n) {
         for (int i = 0; i < n; i++) {
             dp[n] = Math.max(array[n]+dp(i), array[n]+array[n-1]);
         }
-        System.out.println(dp[n]);
         return dp[n];
     }
 }
