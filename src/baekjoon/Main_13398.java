@@ -21,13 +21,19 @@ public class Main_13398 {
         // 수열에서 수를 하나 제거할 수 있다
         // 첨부터 연속으로 더한 값에서 제일 작은 값 뺀것과 직전값+현재값 비교하기
         // 10 -4 3 1 5 6 -35 12 21 -1
-        // 10+(-4)+3 vs 9
+        // 10+(-4) vs 10(-4 제외) = 6
+        // 6+3 vs 10+(-4)+3(-4 제외) = 13
+        // 13+1 vs 10+(-4)+3+1(-4 제외) = 14
+        // 14+5 vs 10+(-4)+3+1+5(-4 제외) = 19
+
 
         dp[0] = array[0];
 
         for (int i = 1; i < N; i++) {
-            int min = Arrays.stream(dp).min().getAsInt();
-            dp[i] = Math.max(dp[i-1]+array[i], dp[i-1]+array[i]-min);
+            int[] tmp = Arrays.copyOfRange(array, 0, i);
+            int min = Math.abs(Arrays.stream(tmp).min().getAsInt());
+            dp[i] = Math.max(dp[i-1]+array[i], Arrays.stream(tmp).sum()-min);
+            System.out.println(dp[i]+" "+(dp[i-1]+array[i])+" "+min);
         }
         System.out.println(Arrays.toString(dp));
     }
