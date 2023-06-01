@@ -30,11 +30,15 @@ public class Main_13398 {
         dp[0] = array[0];
 
         for (int i = 1; i < N; i++) {
-            int[] tmp = Arrays.copyOfRange(array, 0, i);
-            int min = Math.abs(Arrays.stream(tmp).min().getAsInt());
-            dp[i] = Math.max(dp[i-1]+array[i], Arrays.stream(tmp).sum()-min);
-            System.out.println(dp[i]+" "+(dp[i-1]+array[i])+" "+min);
+            dp[i] = Math.max(dp[i-1]+array[i], array[i-1]+array[i]);
+            //dp[i] = Math.max(Math.max(dp[i-1]+array[i], 0), Arrays.stream(tmp).sum()-min);
         }
-        System.out.println(Arrays.toString(dp));
+        int max = 0;
+        for (int i = 1; i < N; i++) {
+            int[] tmp = Arrays.copyOfRange(array, 0, i);
+            int min = Arrays.stream(tmp).min().getAsInt();
+            max = Math.max(dp[i], Arrays.stream(tmp).sum()-min);
+        }
+        System.out.println(max);
     }
 }
