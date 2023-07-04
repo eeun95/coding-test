@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main_1010 {
+    static int[][] dp;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
@@ -16,14 +17,37 @@ public class Main_1010 {
             int N = Integer.parseInt(st.nextToken());
             int M = Integer.parseInt(st.nextToken());
 
-            if(N==1 || M==1) {
-                sb.append(N==1 ? M : N).append("\n");
-            } else if(N==M) {
-                sb.append(1).append("\n");
-            } else {
-
+            dp = new int[N+1][M+1];
+            for (int j = 1; j <= N; j++) {
+                for (int k = 1; k <= M; k++) {
+                    if(j<=k) {
+                        dp(j, k);
+                    }
+                }
             }
+
+            System.out.println(dp[N][M]);
         }
-        System.out.println(sb);
+    }
+    static void dp(int N, int M) {
+        if(N==1 || M==1) {
+            dp[N][M] = N==1 ? M : N;
+        } else if(N==M) {
+            dp[N][M] = 1;
+        } else {
+            int sum = 0;
+            int n = N;
+            int m = M;
+            while(true) {
+                sum += dp[n-1][m-1];
+                //System.out.println("dp["+N+"]["+M+"] += dp["+(n-1)+"]["+(m-1)+"]"+dp[n-1][m-1]);
+                if(n-1 == m-1) {
+                    break;
+                }
+                m--;
+            }
+            dp[N][M] = sum;
+        }
+        //System.out.println(N+" "+M+" "+dp[N][M]);
     }
 }
