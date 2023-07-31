@@ -1,10 +1,10 @@
 package baekjoon
 fun main() {
-    var br = readLine()!!
     while (true) {
+        val br = readLine()!!
         val s = br.split(" ")
-
         if (s[0] == "0" && s[1] == "0") break
+
         val first = s[0].toInt()
         val second = s[1].toInt()
         if (second % first == 0) {
