@@ -15,7 +15,6 @@ public class Main2581 {
         prime = new boolean[N + 1];	// 배열 생성
         get_prime();
 
-
         // 소수 합 및 최솟값
         int sum = 0;
         int min = Integer.MAX_VALUE;
