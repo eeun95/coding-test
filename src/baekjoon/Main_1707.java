@@ -15,7 +15,9 @@ public class Main_1707 {
             int E = Integer.parseInt(s.split(" ")[1]);
 
             for(int j=0; j<E; j++) {
-                System.out.println(br.readLine());
+                String ss = br.readLine();
+                int u = Integer.parseInt(ss.split(" ")[0]);
+                int v = Integer.parseInt(ss.split(" ")[1]);
             }
         }
     }
