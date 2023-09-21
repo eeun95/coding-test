@@ -10,11 +10,15 @@ public class Main2903 {
         // 1 - 9
         // 2 - 25
         // 5 - 1089
-        double v = (9 * Math.pow(4, N - 1)) - Math.pow(3, N);
-        System.out.println("9 * "+Math.pow(4, N-1)+" - "+Math.pow(3, N));
+        int base = (int) Math.pow(4, N-1);
+        int num = (9*base) - (base*3-1);
+        System.out.println("9 * "+Math.pow(4, N-1)+" - "+Math.pow(4, N-1)*3);
         if(N == 1) {
-            v = 9;
+            num = 9;
         }
-        System.out.println(v);
+        System.out.println(num);
+
+        int vertices = (int) Math.pow(2, N) * (int) Math.pow(2, N);
+        System.out.println(vertices);
     }
 }
